@@ -3,7 +3,7 @@ name: deploy
 on:
   push:
     branches:
-      # - master
+      - master
   workflow_dispatch:
 
 jobs:
@@ -35,6 +35,6 @@ jobs:
         docker tag react-with-onesignal:latest ${{ secrets.AWS_REPOSITORY_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/react-with-onesignal:latest
         docker push ${{ secrets.AWS_REPOSITORY_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/react-with-onesignal:latest
 
-    # - name: Update Lambda Function
-    #   run: |
-    #     aws lambda update-function-code --function-name react-with-onesignal --image-uri ${{ secrets.AWS_REPOSITORY_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/react-with-onesignal:latest
+    - name: Update Lambda Function
+      run: |
+        aws lambda update-function-code --function-name react-with-onesignal --image-uri ${{ secrets.AWS_REPOSITORY_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/react-with-onesignal:latest
