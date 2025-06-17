@@ -1,0 +1,12 @@
+@host = http://localhost:3000
+@subscription = 
+
+###
+
+POST {{host}}/api/send-notification
+Content-Type: application/json
+
+{
+    "message": "New message",
+    "subscription": {{subscription}}
+}
