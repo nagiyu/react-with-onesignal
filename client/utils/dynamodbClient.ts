@@ -1,0 +1,12 @@
+// DynamoDBクライアント生成ユーティリティ
+import { DynamoDBClient } from "@aws-sdk/client-dynamodb";
+
+export function createDynamoDBClient() {
+  return new DynamoDBClient({
+    region: process.env.AWS_REGION,
+    credentials: {
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID || "",
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || "",
+    },
+  });
+}

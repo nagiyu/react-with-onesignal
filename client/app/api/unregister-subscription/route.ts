@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
-import { DynamoDBClient, DeleteItemCommand } from "@aws-sdk/client-dynamodb";
+import { DeleteItemCommand } from "@aws-sdk/client-dynamodb";
+import { createDynamoDBClient } from "@/utils/dynamodbClient";
 
 export async function POST(req: NextRequest) {
   const body = await req.json();
@@ -9,13 +10,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ success: false, error: "ID is required" }, { status: 400 });
   }
 
-  const client = new DynamoDBClient({
-    region: process.env.AWS_REGION,
-    credentials: {
-      accessKeyId: process.env.AWS_ACCESS_KEY_ID || "",
-      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY || "",
-    },
-  });
+  const client = createDynamoDBClient();
 
   const params = {
     TableName: "NextSubscription",
