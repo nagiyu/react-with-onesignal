@@ -7,9 +7,7 @@ export function createDynamoDBClient() {
 
   if (!accessKeyId?.trim() || !secretAccessKey?.trim()) {
     // Lambda環境など、環境変数がない場合は credentials を指定しない
-    return new DynamoDBClient({
-      region: process.env.AWS_REGION,
-    });
+    return new DynamoDBClient({});
   }
 
   return new DynamoDBClient({
