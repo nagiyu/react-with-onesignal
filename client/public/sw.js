@@ -17,7 +17,6 @@ self.addEventListener('push', function (event) {
 
 // 表示された通知がクリックされたときの処理
 self.addEventListener('notificationclick', function (event) {
-  console.log('通知をクリックしました。')
   event.notification.close();
   event.waitUntil(
     clients.openWindow("http://localhost:3000")

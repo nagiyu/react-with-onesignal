@@ -13,6 +13,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: Rewrite sw.js endpoint from secrets
+      run: |
+        sed -i 's|http://localhost:3000|${{ secrets.ENDPOINT_URL }}|g' client/public/sw.js
+
     - name: AWS CLI install
       run: |
         curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
