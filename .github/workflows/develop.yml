@@ -40,8 +40,6 @@ jobs:
           --build-arg VAPID_CONTACT_EMAIL=${{ secrets.VAPID_CONTACT_EMAIL }} \
           --build-arg VAPID_PRIVATE_KEY=${{ secrets.VAPID_PRIVATE_KEY }} \
           --build-arg AWS_REGION=${{ secrets.BUILD_AWS_REGION }} \
-          --build-arg AWS_ACCESS_KEY_ID= \
-          --build-arg AWS_SECRET_ACCESS_KEY= \
           -t react-with-onesignal .
         docker tag react-with-onesignal:latest ${{ secrets.AWS_REPOSITORY_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/react-with-onesignal:latest
         docker push ${{ secrets.AWS_REPOSITORY_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/react-with-onesignal:latest
