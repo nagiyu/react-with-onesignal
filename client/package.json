@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build:sw": "tsc -p sw",
     "dev": "next dev",
     "dev:turbopack": "next dev --turbopack",
     "build": "next build",
